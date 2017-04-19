@@ -1,6 +1,9 @@
+import { FormBuilder, Validators } from '@angular/forms';
 import {ServiceProvider} from "../../providers/service-provider";
 import { Component } from '@angular/core';
 import { HomePage } from '../home/home'
+import { AlertController } from 'ionic-angular';
+
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
 /**
@@ -16,17 +19,27 @@ import { IonicPage, NavController, NavParams } from 'ionic-angular';
 })
 export class Adduser {
 
-  constructor(public navCtrl: NavController, public navParams: NavParams ,  public service : ServiceProvider) {
-  }
+  insertar : any = {};
+
+     constructor(public navCtrl: NavController, 
+                  public formBuilder : FormBuilder, 
+                  public service : ServiceProvider,
+                  public alertCtrl: AlertController) {
+            this.insertar = this.formBuilder.group({
+                  nombre:['', Validators.required],
+                  email:['', Validators.required],
+                  pass:['', Validators.required]
+            });
+}
 
 
-  ionViewDidLoad() {
-    
-  }
 
-  insertarDatos(req){
- 
-    this.service.InsertarUsuario(req.value)
+
+  insertarDatos(){
+     
+     /*console.log(this.insertar.value);*/
+
+    this.service.InsertarUsuario(this.insertar.value)
     .subscribe(
       data=>console.log(data.mensage),
       err=>console.log(err)

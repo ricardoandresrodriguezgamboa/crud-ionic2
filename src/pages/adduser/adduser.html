@@ -14,24 +14,21 @@
 
 
 <ion-content padding>
-       <form #f="ngForm" (ngSubmit)="insertarDatos(f)">
+      <form [formGroup]="insertar" (ngSubmit)="insertarDatos()">
             <ion-list>
                   <ion-item>
-                        <ion-label floating >nombre</ion-label>
-                        <ion-input type="text" name="nombre" ngModel #nombre="ngModel"></ion-input>
+                        <ion-label floating>nombre</ion-label>
+                        <ion-input type="text" name="nombre" formControlName="nombre"></ion-input>
                   </ion-item>
                   <ion-item>
                         <ion-label floating>Email</ion-label>
-                        <ion-input  type="email" name="email" ngModel #email="ngModel"></ion-input>
+                        <ion-input type="email" name="email" formControlName="email"></ion-input>
                   </ion-item>
                   <ion-item>
                         <ion-label floating>pass</ion-label>
-                        <ion-input  type="password" name="pass" ngModel #pass="ngModel"></ion-input>
+                        <ion-input type="password" name="pass" formControlName="pass"></ion-input>
                   </ion-item>
-                    <button  ion-button full block color="secondary">Enviar</button>
+                        <button [disabled]="insertar.invalid" ion-button full block color="secondary">Enviar</button>
             </ion-list>
-      </form>
-        <!-- <p>valor formulario : {{f.value | json }}</p>
-         <p>valor formulario : {{f.invalid}}</p> 
-         <button  ion-button full (click)="mostrarNombre()">mostrar nombre</button>-->
+</form>
 </ion-content>
