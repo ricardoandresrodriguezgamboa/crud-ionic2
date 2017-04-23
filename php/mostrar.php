@@ -1,9 +1,9 @@
 <?php
 header("Access-Control-Allow-Origin: *");
 header('Content-Type: text/html; charset=utf-8');
-$dns = "mysql:host=localhost;dbname=aula";
-$user = "root";
-$pass = "";
+$dns = "mysql:host=sql10.freesqldatabase.com;dbname=sql10170424";
+$user = "sql10170424";
+$pass = "fF8wVCvaED";
 try {
 	$con = new PDO($dns, $user, $pass);
 	if(!$con){

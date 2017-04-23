@@ -3,6 +3,7 @@ import {ServiceProvider} from "../../providers/service-provider";
 import { Component } from '@angular/core';
 import { HomePage } from '../home/home'
 import { AlertController } from 'ionic-angular';
+import { ToastController } from 'ionic-angular';
 
 import { IonicPage, NavController, NavParams } from 'ionic-angular';
 
@@ -22,6 +23,7 @@ export class Adduser {
   insertar : any = {};
 
      constructor(public navCtrl: NavController, 
+                  public toastCtrl: ToastController,
                   public formBuilder : FormBuilder, 
                   public service : ServiceProvider,
                   public alertCtrl: AlertController) {
@@ -38,10 +40,15 @@ export class Adduser {
   insertarDatos(){
      
      /*console.log(this.insertar.value);*/
-
+    let toast = this.toastCtrl.create({
+      message: 'Usuario agregado correctamente',
+      duration: 3000
+    });
+   
+  
     this.service.InsertarUsuario(this.insertar.value)
     .subscribe(
-      data=>console.log(data.mensage),
+      data=> toast.present(), //console.log(data.mensage),
       err=>console.log(err)
     );
   }

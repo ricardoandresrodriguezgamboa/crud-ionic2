@@ -13,7 +13,7 @@ import { Observable } from "rxjs/Observable";
 @Injectable()
 export class ServiceProvider {
 
-   api : string = "http://localhost:8080/api/api/";
+   api : string = "https://ricardo123123.000webhostapp.com/";
 
   constructor(public http: Http) {
     /*console.log('Hello ServiceProvider Provider');*/

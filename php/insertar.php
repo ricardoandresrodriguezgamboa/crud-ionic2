@@ -1,10 +1,8 @@
 <?php
 
 header("Access-Control-Allow-Origin:http://localhost:8100");
-header("Content-Type: application/json");
+header("Content-Type: application/x-www-form-urlencoded");
 header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Accept");
-
-
 	
     $data = file_get_contents("php://input");
     $objData = json_decode($data);
@@ -24,7 +22,7 @@ header("Access-Control-Allow-Headers: Origin, X-Requested-With, Content-Type, Ac
 	
     $datos; 
 
-    @$db = new PDO("mysql:host=localhost;dbname=aula", "root", "");
+    @$db = new PDO("mysql:host=sql10.freesqldatabase.com;dbname=sql10170424", "sql10170424", "fF8wVCvaED");
 
     if($db){
         $sql = " insert into usuarios values(NULL,'".$nombre."','".$email."','".$pass."')";
